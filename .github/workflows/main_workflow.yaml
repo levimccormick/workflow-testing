@@ -2,8 +2,6 @@ name: The main workflow
 
 on:
   push:
-    branches:
-      - *
 
 jobs:
   tests:
