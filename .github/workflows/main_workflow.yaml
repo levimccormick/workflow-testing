@@ -5,10 +5,10 @@ on:
 
 jobs:
   tests:
-    uses: ./.github/workflows/unit_tests.yml
+    uses: ./.github/workflows/unit_tests.yaml
     with:
       username: $GITHUB_ACTOR
   deploy:
-    uses: ./.github/workflows/deployment.yml
+    uses: ./.github/workflows/deployment.yaml
     with:
       username: $GITHUB_ACTOR
