@@ -2,10 +2,6 @@ name: Tests and Checks
 
 on:
   workflow_call:
-    inputs:
-      username:
-        required: true
-        type: string
 
 jobs:
   run-the-tests:
