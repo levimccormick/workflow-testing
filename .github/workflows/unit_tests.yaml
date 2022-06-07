@@ -6,8 +6,6 @@ on:
 jobs:
   run-the-tests:
     runs-on: ubuntu-latest
-    permissions:
-      contents: "*"
 
     steps:
       - uses: actions/checkout@v2
