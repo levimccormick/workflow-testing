@@ -1,0 +1,13 @@
+name: Tests and Checks
+
+jobs:
+  run-the-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: "*"
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run unit tests
+        run: |
+          echo "Running unit tests"
