@@ -1,0 +1,16 @@
+name: The main workflow
+
+on:
+  push:
+    branches:
+      - *
+
+jobs:
+  tests:
+    uses: ./.github/workflows/unit_tests.yml
+    with:
+      username: $GITHUB_ACTOR
+  deploy:
+    uses: ./.github/workflows/deployment.yml
+    with:
+      username: $GITHUB_ACTOR
