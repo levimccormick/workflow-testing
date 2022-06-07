@@ -1,9 +1,9 @@
-name: The main workflow
+name: A branch workflow
 
 on:
   push:
     branches:
-      - main
+      - '!main'
 
 jobs:
   tests:
