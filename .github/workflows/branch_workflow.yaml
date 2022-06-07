@@ -3,6 +3,7 @@ name: A branch workflow
 on:
   push:
     branches:
+      - '*'
       - '!main'
 
 jobs:
