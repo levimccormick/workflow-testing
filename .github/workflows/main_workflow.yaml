@@ -8,3 +8,4 @@ jobs:
     uses: ./.github/workflows/unit_tests.yaml
   deploy:
     uses: ./.github/workflows/deployment.yaml
+    needs: [tests]
