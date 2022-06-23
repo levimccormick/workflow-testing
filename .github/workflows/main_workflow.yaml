@@ -12,5 +12,7 @@ jobs:
     if: always()
     uses: ./.github/workflows/unit_tests.yaml
   deploy:
-    uses: ./.github/workflows/deployment.yaml
     needs: [tests]
+    if: always()
+    uses: ./.github/workflows/deployment.yaml
+    
