@@ -1,0 +1,14 @@
+name: Tests and Checks
+
+on:
+  workflow_call:
+
+jobs:
+  run-the-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Conditional block
+        run: |
+          echo "Running conditional block on ${GITHUB_REF_NAME}"

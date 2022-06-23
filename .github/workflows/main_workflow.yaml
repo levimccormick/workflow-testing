@@ -2,11 +2,14 @@ name: The main workflow
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
+  conditional:
+    if: github.ref_name == 'main'
+    uses: ./.github/workflows/conditional_invocation.yaml
   tests:
+    needs: [conditional]
+    if: always()
     uses: ./.github/workflows/unit_tests.yaml
   deploy:
     uses: ./.github/workflows/deployment.yaml
