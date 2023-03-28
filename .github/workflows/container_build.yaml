@@ -1,0 +1,13 @@
+name: Container Build
+
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy
+        run: |
+          echo "Building ${container_name} from ${GITHUB_REF_NAME}"
