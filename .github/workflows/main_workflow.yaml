@@ -16,5 +16,5 @@ jobs:
     needs: [tests]
   build_one:
     uses: ./.github/workflows/container_build.yaml
-    env:
+    with:
       container_name: "Container One"
