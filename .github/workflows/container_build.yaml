@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: Deploy
         run: |
-          echo "Building ${{ env.container_name }} from ${GITHUB_REF_NAME}"
+          echo "Building ${{ inputs.container_name }} from ${GITHUB_REF_NAME}"
