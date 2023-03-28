@@ -3,7 +3,7 @@ name: Container Build
 on:
   workflow_call:
     inputs:
-      container_name:
+      docker_file:
         description: 'A friendly name of the container we are building.'
         required: true
         type: string
@@ -11,7 +11,28 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Deploy
+      - name: Git clone
+        uses: actions/checkout@v3
+        
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::1234567890:role/example-role
+          role-session-name: samplerolesession
+          aws-region: ${{ env.AWS_REGION }}
+          
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        
+      - name: Build and Push
         run: |
           echo "Building ${{ inputs.container_name }} from ${GITHUB_REF_NAME}"
+
+      - name: CrowdStrike Container Image Scan
+        uses: crowdstrike/container-image-scan-action@v0.9
+        with:
+          falcon_client_id: <my_falcon_client_id>
+          container_repository: docker.io/library/busybox
+        env:
+          FALCON_CLIENT_SECRET: "${{ secrets.FALCON_CLIENT_SECRET }}"
